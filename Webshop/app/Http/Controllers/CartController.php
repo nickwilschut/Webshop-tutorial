@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cart;
 
-class CartController extends Controller
-{
+class CartController extends Controller {
     public function test() {
     	$cart = new Cart();
 

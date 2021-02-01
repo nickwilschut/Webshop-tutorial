@@ -4,8 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Cart
-{
+class Cart {
     use HasFactory;
 
     private $items = [];

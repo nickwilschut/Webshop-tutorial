@@ -4,29 +4,33 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            @foreach($categories as $category)
+            @foreach($products as $product)
             <div class="card my-3 d-flex">
-                <div class="card-header">{{ $category->name }}</div>
+                <div class="card-header">{{ $product->name }}</div>
 
                 <div class="card-body flex-column">
                     <div class="row">
 
                         <div class="col-3">
-                            <img src="{{ $category->image_url }}" />
+                            <img src="{{ $product->image_url }}" />
                         </div>
 
                         <div class="col-9 border-left">
-                            <a href="products/{{ $category->id }}" class="btn btn-primary">View</a>
+                            <a href="product/{{ $product->id }}" class="btn btn-primary">View</a>
+                            <a href="session/{{ $product->id }}" class="btn btn-success">Add to cart</a>
 
-                            <div class="btn btn-link">
+                            <div class="text-secondary">
                                 omschrijving
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-             @endforeach
+            @endforeach
         </div>
     </div>
 </div>
 @endsection
+
+
+

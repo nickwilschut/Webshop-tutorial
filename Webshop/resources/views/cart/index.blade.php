@@ -8,7 +8,6 @@
                 <div class="card-header">Session content</div>
 
                 <div class="card-body">
-                    <ul>
                     @foreach($session as $s)
                         <li>{{ $s or ''}}</li>
                     @endforeach

@@ -4,6 +4,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <div class="jumbotron text-center">
+                <h1>Categories</h1>
+            </div>
+
             @foreach($categories as $category)
             <div class="card my-3 d-flex">
                 <div class="card-header">{{ $category->name }}</div>

@@ -15,7 +15,7 @@
                         </div>
 
                         <div class="col-9 border-left">
-                            <a href="session/{{ $products->id }}" class="btn btn-success">Add to cart</a>
+                            <a href="/addtocart/{{ $product->id }}" class="btn btn-success">Add to cart</a>
 
                             <div class="text-secondary">
                                 omschrijving

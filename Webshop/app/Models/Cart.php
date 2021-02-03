@@ -9,14 +9,49 @@ class Cart {
 
     private $items = [];
 
-    public function __constructor() {
+    public function __construct() {
+
     	if ( ! session()->has('cart')) {
-	    	// maak nieuwe cart aan in de sessie (leeg)
+	    	// maak nieuwe cart aan in de sessie (leeg).
 	    	session(['cart' => [] ]);
 	    	session()->save();
-	    } else {
-	    	// haal bestaande cart op uit sessie
-	    	$this->items = session['cart'];
 	    }
     }
+
+    public function addToCart($product) {
+
+    	if (session()->all() != null) {
+    		$session = session()->all();
+    		if (session()->has('cart') && is_array($session)) {
+
+    			session()->push('cart', $product);
+		    	session()->save();
+    		} else {
+    			__constructor();
+    		}
+    	} else {
+    		__constructor();
+    	}
+    	
+    }
+
+    public function emptyCart() {
+
+    	session()->forget('cart');
+    	session()->save();
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

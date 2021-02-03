@@ -27,7 +27,9 @@ Route::get('/products', [App\Http\Controllers\ProductController::class, 'index']
 Route::get('/products/{id}', [App\Http\Controllers\ProductController::class, 'showMultiple']);
 Route::get('/product/{id}', [App\Http\Controllers\ProductController::class, 'show']);
 
-Route::get('/session', [App\Http\Controllers\CartController::class, 'test']);
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'test']);
+Route::get('/emptycart', [App\Http\Controllers\CartController::class, 'emptyCart']);
+Route::get('/addtocart/{id}', [App\Http\Controllers\CartController::class, 'addToCart']);
 
 
 

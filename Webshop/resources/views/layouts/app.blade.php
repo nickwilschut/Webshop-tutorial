@@ -42,7 +42,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/session">Shopping Cart</a>
+                            <a class="nav-link" href="/cart">Shopping Cart</a>
                         </li>
                     </ul>
                    

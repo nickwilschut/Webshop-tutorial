@@ -20,9 +20,9 @@
                         </div>
 
                         <div class="col-9 border-left">
-                            <a href="products/{{ $category->id }}" class="btn btn-primary">View</a>
+                            <a href="/products/{{ $category->id }}" class="btn btn-success">View</a>
 
-                            <div class="btn btn-link">
+                            <div class="text-secondary">
                                 omschrijving
                             </div>
                         </div>

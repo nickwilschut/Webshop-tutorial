@@ -15,9 +15,10 @@
                         </div>
 
                         <div class="col-9 border-left">
-                            <a href="/addtocart/{{ $product->id }}" class="btn btn-success">Add to cart</a>
+                            <a href="/addtocart/{{ $products->id }}" class="btn btn-success">Add to cart</a>
+                            <a href="/addtocart/{{ $products->id }}" class="link text-success ml-2">€{{ $products->price }}</a>
 
-                            <div class="text-secondary">
+                            <div class="text-secondary mt-3">
                                 omschrijving
                             </div>
                         </div>

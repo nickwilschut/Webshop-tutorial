@@ -22,7 +22,7 @@
                         <div class="col-9 border-left">
                             <a href="/products/{{ $category->id }}" class="btn btn-success">View</a>
 
-                            <div class="text-secondary">
+                            <div class="text-secondary mt-3">
                                 omschrijving
                             </div>
                         </div>

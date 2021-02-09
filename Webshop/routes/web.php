@@ -27,8 +27,11 @@ Route::get('/products', [App\Http\Controllers\ProductController::class, 'index']
 Route::get('/products/{id}', [App\Http\Controllers\ProductController::class, 'showMultiple']);
 Route::get('/product/{id}', [App\Http\Controllers\ProductController::class, 'show']);
 
-Route::get('/cart', [App\Http\Controllers\CartController::class, 'test']);
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'createCart']);
 Route::get('/emptycart', [App\Http\Controllers\CartController::class, 'emptyCart']);
+Route::get('/pay', [App\Http\Controllers\CartController::class, 'pay']);
+Route::get('/addToAmount/{id}', [App\Http\Controllers\CartController::class, 'addToAmount']);
+Route::get('/lowerAmount/{id}', [App\Http\Controllers\CartController::class, 'lowerAmount']);
 Route::get('/addtocart/{id}', [App\Http\Controllers\CartController::class, 'addToCart']);
 
 

@@ -10,6 +10,7 @@ class CategoryController extends Controller
     public function index() {
     	$categories = \App\Models\Category::all();
 
+        // return category view.
     	return view('category.index', ['categories' => $categories]);
     }
 
@@ -17,6 +18,7 @@ class CategoryController extends Controller
     public function show($id) {
     	$categories = \App\Models\Category::findOrFail($id);
 
+        // return category view.
         return view('category.view', ['category' => $categories]);
     }
 }

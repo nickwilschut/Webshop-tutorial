@@ -1,14 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<script>
-    window.onload = function() {
-    if(!window.location.hash) {
-        window.location = window.location + '#loaded';
-        window.location.reload();
-    }
-}
-</script>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -30,16 +22,17 @@
                                             <img src="{{ $cart->image_url }}" />
                                         </div>
 
-                                        <div class="col-7">
+                                        <div class="col-6">
                                             <div class="text-secondary mt-3">
                                                 {{ $cart->name }}
                                             </div>
                                             <div class="text-success">€{{ $cart->price }}</div>
                                         </div>
-                                        <div class="col-2 mt-3">
+                                        <div class="col-3 mt-3">
                                             <p>Amount: {{ $cart->amount }}</p>
                                             <a href="/addToAmount/{{ $cart->id }}" class="btn-sm btn-info">+</a>
                                             <a href="/lowerAmount/{{ $cart->id }}" class="btn-sm btn-warning">-</a>
+                                            <a href="/removeFromCart/{{ $cart->id }}" class="btn-sm btn-danger">remove</a>
                                         </div>
                                     </div>
                                 </div>

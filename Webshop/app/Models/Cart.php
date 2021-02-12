@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Cart {
     use HasFactory;
 
-    private $items = [];
-
     public function __construct() {
     	// if cart does not exist, create new.
     	if ( ! session()->has('cart')) {

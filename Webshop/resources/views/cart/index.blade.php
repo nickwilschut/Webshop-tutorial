@@ -8,9 +8,8 @@
                 <div class="card-header">Shopping cart info:</div>
                 <div class="card-body">
                     @if ($session['cart'] == null)
-                        <div class="text-secondary">
+                        <div class="text-secondary ml-1">
                             Your cart is currently empty.
-                            <a href="/products" class="text-success">Click here to continue shopping</a>
                         </div>
                     @else
                         @foreach($session['cart'] as $cart)
@@ -32,7 +31,7 @@
                                             <p>Amount: {{ $cart->amount }}</p>
                                             <a href="/addToAmount/{{ $cart->id }}" class="btn-sm btn-info">+</a>
                                             <a href="/lowerAmount/{{ $cart->id }}" class="btn-sm btn-warning">-</a>
-                                            <a href="/removeFromCart/{{ $cart->id }}" class="btn-sm btn-danger">remove</a>
+                                            <a class="btn-sm btn-dark" data-toggle="modal" data-target="#removeProduct">remove</a>
                                         </div>
                                     </div>
                                 </div>
@@ -61,6 +60,21 @@
                             </div>
 
                             <!-- Modal -->
+                            <div class="modal fade" id="removeProduct" tabindex="-1">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-body">
+                                    <div>Are your sure you want to remove this item?</div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <a href="/removeFromCart/{{ $cart->id }}" type="button" class="btn btn-danger">Remove item</a>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <!-- Modal -->
                             <div class="modal fade" id="emptymodal" tabindex="-1">
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -76,7 +90,7 @@
                             </div>
                         </div>
                     @endif
-                    </ul>
+                    <a href="/products" class="text-success ml-1">Click here to continue shopping</a>
                 </div>
             </div>
         </div>

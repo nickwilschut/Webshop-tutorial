@@ -39,5 +39,8 @@ Route::get('/lowerAmount/{id}', [App\Http\Controllers\CartController::class, 'lo
 Route::get('/addtocart/{id}', [App\Http\Controllers\CartController::class, 'addToCart']);
 Route::get('/removeFromCart/{id}', [App\Http\Controllers\CartController::class, 'removeProduct']);
 
+// Routes for orders
+Route::get('/order', [App\Http\Controllers\OrderController::class, 'index']);
+
 
 

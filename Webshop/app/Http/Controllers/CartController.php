@@ -80,6 +80,7 @@ class CartController extends Controller
 
     // function to pay.
     public function pay () {
+        
     	$this->emptyCart();
     }
 }

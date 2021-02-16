@@ -13,4 +13,8 @@ class OrderController extends Controller
 
     	return view('order.index', ['orders' => $orders]);
     }
+
+    public function insert() {
+    	$orders = \App\Models\Order::insert();
+    }
 }

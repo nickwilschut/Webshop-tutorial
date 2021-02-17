@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Controllers\OrderController;
 
 class Cart {
     use HasFactory;
@@ -139,6 +140,34 @@ class Cart {
 	    } else {
 			__constructor();
 		}
+    }
+
+    public function getCartForOrder() {
+    	// check if cart exists.
+    	if (session()->has('cart')) {
+
+    		// set data.
+    		$cart = session()->get('cart');
+    		$price = session()->get('totalPrice');
+    		$order = array();
+    			
+    		// Push to order array.
+    		array_push($order, ['price' => $price[0]]);
+    		foreach ($cart as $products) {
+				array_push($order, $products['name']);
+    		}
+    		
+    		// encode order for url.
+    		$order = serialize($order);
+    		$order = urlencode($order);
+
+    		// empty the shoppingcart.
+    		$this->emptyCart();
+
+    		// redirect to the order insert.
+	    	header("Location: http://127.0.0.1:8000/order/insert/" . $order);
+	    	die();
+    	}
     }
 }
 

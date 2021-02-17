@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Orders
 {
@@ -16,6 +17,14 @@ class Orders
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        $userId = Auth::id(); 
+
+        if ($userId != '') {
+            return $next($request);
+        } else {
+            return redirect('/home');
+        }
+
+        
     }
 }

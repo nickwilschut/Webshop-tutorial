@@ -21,9 +21,9 @@
 
                         <div class="col-9 border-left">
                             <a href="/product/{{ $product->id }}" class="btn btn-primary">View</a>
-                            <a href="/addtocart/{{ $product->id }}" class="btn btn-success">Add to cart</a>
+                            <a href="/cart/addtocart/{{ $product->id }}" class="btn btn-success">Add to cart</a>
 
-                            <a href="/addtocart/{{ $product->id }}" class="link text-success ml-2">€{{ $product->price }}</a>
+                            <a href="/cart/addtocart/{{ $product->id }}" class="link text-success ml-2">€{{ $product->price }}</a>
 
                             <div class="text-secondary mt-3">
                                 omschrijving

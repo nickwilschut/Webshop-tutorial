@@ -29,8 +29,8 @@
                                         </div>
                                         <div class="col-3 mt-3">
                                             <p>Amount: {{ $cart->amount }}</p>
-                                            <a href="/addToAmount/{{ $cart->id }}" class="btn-sm btn-info">+</a>
-                                            <a href="/lowerAmount/{{ $cart->id }}" class="btn-sm btn-warning">-</a>
+                                            <a href="/cart/addToAmount/{{ $cart->id }}" class="btn-sm btn-info">+</a>
+                                            <a href="/cart/lowerAmount/{{ $cart->id }}" class="btn-sm btn-warning">-</a>
                                             <a class="btn-sm btn-dark" data-toggle="modal" data-target="#removeProduct">remove</a>
                                         </div>
                                     </div>
@@ -52,7 +52,7 @@
                                     <div>The total price is: @foreach($session['totalPrice'] as $s) {{$s}} @endforeach</div>
                                   </div>
                                   <div class="modal-footer">
-                                    <a href="/pay" type="button" class="btn btn-success">Pay €@foreach($session['totalPrice'] as $s) {{$s}} @endforeach</a>
+                                    <a href="/cart/pay" type="button" class="btn btn-success">Pay €@foreach($session['totalPrice'] as $s) {{$s}} @endforeach</a>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                   </div>
                                 </div>
@@ -67,7 +67,7 @@
                                     <div>Are your sure you want to remove this item?</div>
                                   </div>
                                   <div class="modal-footer">
-                                    <a href="/removeFromCart/{{ $cart->id }}" type="button" class="btn btn-danger">Remove item</a>
+                                    <a href="/cart/removeFromCart/{{ $cart->id }}" type="button" class="btn btn-danger">Remove item</a>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                   </div>
                                 </div>
@@ -82,7 +82,7 @@
                                     <div>Are you sure you want to empty your cart?</div>
                                   </div>
                                   <div class="modal-footer">
-                                    <a href="/emptycart" type="button" class="btn btn-danger">Empty</a>
+                                    <a href="/cart/emptycart" type="button" class="btn btn-danger">Empty</a>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                   </div>
                                 </div>

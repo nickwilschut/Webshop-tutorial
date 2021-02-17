@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 12 feb 2021 om 09:22
+-- Gegenereerd op: 17 feb 2021 om 15:25
 -- Serverversie: 8.0.18
 -- PHP-versie: 7.3.11
 
@@ -80,11 +80,38 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2019_08_19_000000_create_failed_jobs_table', 1),
-(4, '2021_01_29_085031_create_categories_table', 1),
-(5, '2021_01_29_102406_create_products_table', 1);
+(30, '2014_10_12_000000_create_users_table', 1),
+(31, '2014_10_12_100000_create_password_resets_table', 1),
+(32, '2019_08_19_000000_create_failed_jobs_table', 1),
+(33, '2021_01_29_085031_create_categories_table', 1),
+(34, '2021_01_29_102406_create_products_table', 1),
+(35, '2021_02_16_101302_create_orders_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Tabelstructuur voor tabel `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `product_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `price` double NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Gegevens worden geëxporteerd voor tabel `orders`
+--
+
+INSERT INTO `orders` (`id`, `user_id`, `product_name`, `price`, `created_at`, `updated_at`) VALUES
+(1, 1, 'e-book: the art of desception, thriller: the 100', 18.96, '2021-02-17 14:24:07', '2021-02-17 14:24:07'),
+(2, 1, 'studie: design patterns in software engineering, bio: Mark Zuckerberg', 12.97, '2021-02-17 14:24:49', '2021-02-17 14:24:49'),
+(3, 1, 'e-book: the art of desception, studie: design patterns in software engineering, thriller: the 100', 34.94, '2021-02-17 14:53:31', '2021-02-17 14:53:31'),
+(4, 1, 'e-book: the art of desception, thriller: it', 23.950000000000003, '2021-02-17 14:59:02', '2021-02-17 14:59:02'),
+(5, 2, 'e-book: the art of desception, thriller: it', 18.96, '2021-02-17 15:10:56', '2021-02-17 15:10:56');
 
 -- --------------------------------------------------------
 
@@ -150,7 +177,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Nick Wilschut', 'nickwilschut@gmail.com', NULL, '$2y$10$jfyA5IvdkgTGNdVHnSyF2e4VxgwPIUf501tasLzfoWlDVn95l5KLq', NULL, '2021-02-09 06:46:29', '2021-02-09 06:46:29');
+(1, 'Nick Wilschut', 'nickwilschut@gmail.com', NULL, '$2y$10$0QMo2OQsNqjN199iLp0zuOcVIqBsd5Pk0VkEETywE9mygfhGRjQdO', NULL, '2021-02-17 13:23:53', '2021-02-17 13:23:53'),
+(2, 'Nick Wilschut', 'contact.permeator@gmail.com', NULL, '$2y$10$7p/rAuMuYm9Mkpyi095nW.9kp8F7J2YwGNAI/Y6LmyZOO8qVJV9d6', NULL, '2021-02-17 14:10:39', '2021-02-17 14:10:39');
 
 --
 -- Indexen voor geëxporteerde tabellen
@@ -173,6 +201,12 @@ ALTER TABLE `failed_jobs`
 -- Indexen voor tabel `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexen voor tabel `orders`
+--
+ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -214,7 +248,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT voor een tabel `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT voor een tabel `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT voor een tabel `products`
@@ -226,7 +266,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT voor een tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

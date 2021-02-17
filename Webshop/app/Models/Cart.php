@@ -17,6 +17,23 @@ class Cart {
 	    }
     }
 
+    public function getCart() {
+    	$this->calculatePrice();
+		// set $data variable.
+		$data = [];
+    
+    	// check if session is set correctly
+    	if (session()->all() != null && session()->has('cart') && session()->has('totalPrice')) {
+			$data['cart'] = session()->get('cart');
+			$data['totalPrice'] = session()->get('totalPrice');
+
+			// return data to controller.
+			return $data;
+		} else {
+			$this->__construct();
+		}
+    }
+
     // Add to cart function to add new products to cart.
     public function addToCart($id) {
     	// get the product by Id for the shoppingcart.
@@ -34,10 +51,10 @@ class Cart {
     			session()->put('cart.' . $id, $product);
 		    	session()->save();
     		} else {
-    			__constructor();
+    			$this->__construct();
     		}
     	} else {
-    		__constructor();
+    		$this->__construct();
     	}
     	
     }
@@ -47,7 +64,6 @@ class Cart {
     	// set totalprice
     	session(['totalPrice' => [] ]);
 
-    	
     	// get the cart.
     	if (session()->has('cart')) {
 	    	$products = session()->get('cart');
@@ -61,18 +77,24 @@ class Cart {
 	    	// Insert total price in cart.
 			session()->push('totalPrice', $total);
 			session()->save();
+		} else {
+			$this->__construct();
 		}
 
     } 
 
     // Function to empty/remove the cart
     public function emptyCart() {
+
+    	// check if session has a cart.
     	if (session()->has('cart')) {
 	    	// unset cart.
 	    	session()->forget('cart');
 	    	session()->save();
+	    	// call construct function to create new empty cart.
+	    	$this->__construct();
 	    } else {
-			__constructor();
+			$this->__construct();
 		}
     }
 
@@ -94,7 +116,7 @@ class Cart {
 			session()->put('cart.' . $id, $product);
 			session()->save();
 		} else {
-			__constructor();
+			$this->__construct();
 		}
     }
 
@@ -123,7 +145,7 @@ class Cart {
 				session()->save();
 			}
 		} else {
-			__constructor();
+			$this->__construct();
 		}
 
     }
@@ -138,7 +160,7 @@ class Cart {
 	    	session()->pull('cart.' . $id, $product);
 	    	session()->save();
 	    } else {
-			__constructor();
+			$this->__construct();
 		}
     }
 
@@ -167,6 +189,8 @@ class Cart {
     		// redirect to the order insert.
 	    	header("Location: http://127.0.0.1:8000/order/insert/" . $order);
 	    	die();
+    	} else {
+    		$this->__construct();
     	}
     }
 }

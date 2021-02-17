@@ -9,18 +9,15 @@ use App\Models\Product;
 class CartController extends Controller 
 {
 
-	// createCart function to display everything in session.
+	// createCart function to display the cart and totalprice.
     public function createCart() {
     	$cart = new Cart();
 
-    	// call model to calculate price.
-    	$cart->calculatePrice();
-
-    	// set $session variable.
-    	$session = session()->all();
+        // call getCart function.
+        $data = $cart->getCart();
 
     	// return shopping cart view.
-    	return view('cart.index', ['session' => $session]);
+    	return view('cart.index', ['data' => $data]);
     }
 
     // addToCart function to add products to the shoppingcart.
@@ -42,8 +39,7 @@ class CartController extends Controller
     	$cart->emptyCart();
 
     	// redirect back to cart.
-    	header("Location: http://127.0.0.1:8000/cart");
-    	die();
+    	return $this->createCart();
     }
 
     // function to higher the amount of items.
@@ -81,6 +77,8 @@ class CartController extends Controller
     // function to pay.
     public function pay () {
         $cart = new Cart();
+
+        // call function to process the order.
         $cart->getCartForOrder();
     }
 }

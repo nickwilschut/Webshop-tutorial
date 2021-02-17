@@ -7,12 +7,12 @@
             <div class="card my-3">
                 <div class="card-header">Shopping cart info:</div>
                 <div class="card-body">
-                    @if ($session['cart'] == null)
+                    @if ($data['cart'] == null)
                         <div class="text-secondary ml-1">
                             Your cart is currently empty.
                         </div>
                     @else
-                        @foreach($session['cart'] as $cart)
+                        @foreach($data['cart'] as $cart)
                             <div class="card my-3 d-flex">
                                 <div class="card-body flex-column">
                                     <div class="row">
@@ -38,7 +38,7 @@
                             </div>
                         @endforeach
                         <div class="float-left">
-                            <p>total price: @foreach($session['totalPrice'] as $s) {{$s}} @endforeach</p>
+                            <p>total price: @foreach($data['totalPrice'] as $s) {{$s}} @endforeach</p>
                         </div>
                         <div class="float-right">
                             <button class="btn btn-sm btn-success" data-toggle="modal" data-target="#paymodal">Check out</button>
@@ -49,10 +49,10 @@
                               <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                   <div class="modal-body">
-                                    <div>The total price is: @foreach($session['totalPrice'] as $s) {{$s}} @endforeach</div>
+                                    <div>The total price is: @foreach($data['totalPrice'] as $s) {{$s}} @endforeach</div>
                                   </div>
                                   <div class="modal-footer">
-                                    <a href="/cart/pay" type="button" class="btn btn-success">Pay €@foreach($session['totalPrice'] as $s) {{$s}} @endforeach</a>
+                                    <a href="/cart/pay" type="button" class="btn btn-success">Pay €@foreach($data['totalPrice'] as $s) {{$s}} @endforeach</a>
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                                   </div>
                                 </div>

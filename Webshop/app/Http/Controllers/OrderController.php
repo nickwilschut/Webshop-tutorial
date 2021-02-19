@@ -4,16 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Order;
-use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
     // Index function to display all products.
     public function index() {
-    	$userId = Auth::id(); 
-    	// get function to get all orders.
-    	$orders = \App\Models\Order::where('user_id', $userId)->get();
+    	$order = new Order();
 
+    	// call to model to get all orders.
+    	$orders = $order->getOrders();
+    	
     	// Display view.
     	return view('order.index', ['orders' => $orders]);
     }
@@ -25,7 +25,9 @@ class OrderController extends Controller
     		$newOrder = new Order();
 
     		// call insert function.
-    		$newOrder->insert($order);
+    		if ($newOrder->insert($order)) {
+    			return $this->index();
+    		}
     	} else {
     		// Call error function.
     		return $this->error();

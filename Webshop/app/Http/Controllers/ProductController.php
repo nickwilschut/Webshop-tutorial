@@ -10,6 +10,7 @@ class ProductController extends Controller
     public function index() {
     	$products = \App\Models\Product::all();
 
+        // return view.
     	return view('product.index', ['products' => $products]);
     }
 
@@ -17,6 +18,7 @@ class ProductController extends Controller
     public function show($id) {
     	$products = \App\Models\Product::findOrFail($id);
 
+        // return view.
         return view('product.show', ['products' => $products]);
     }
 
@@ -24,6 +26,7 @@ class ProductController extends Controller
     public function showMultiple($id) {
     	$products = \App\Models\Product::where('category_id', $id)->get();
 
+        // return view.
         return view('product.view', ['products' => $products]);
     }
 }

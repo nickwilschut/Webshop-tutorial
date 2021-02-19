@@ -28,7 +28,6 @@ class Order extends Model
     }
 
     public function insert($order) {
-
     	// decode the order data.
     	$order = unserialize(urldecode($order));
 

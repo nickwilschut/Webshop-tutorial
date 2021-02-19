@@ -56,7 +56,6 @@ class Cart {
     	} else {
     		$this->__construct();
     	}
-    	
     }
 
     // Fuction to calculate the total price of all items in the shopping cart.
@@ -80,7 +79,6 @@ class Cart {
 		} else {
 			$this->__construct();
 		}
-
     } 
 
     // Function to empty/remove the cart
@@ -147,7 +145,6 @@ class Cart {
 		} else {
 			$this->__construct();
 		}
-
     }
 
     // Function to remove a product from the shopping cart.

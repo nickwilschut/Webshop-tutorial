@@ -12,8 +12,8 @@ class Order extends Model
 {
     use HasFactory;
 
-     protected static function booted()
-    {
+    // function to add a global scope when model is called.
+    protected static function booted() {
         static::addGlobalScope(new OrderScope);
     }
 
@@ -43,7 +43,7 @@ class Order extends Model
 		if (isset($order) && isset($price) && isset($userId)) {
 			// insert.
 			if ($orders = DB::table('orders')->insert([['user_id' => $userId, 'product_name' => implode(', ', $order), 'price' => json_encode($price['price'])]])) {
-				// redirect back to order.
+				// return true.
 		    	return true;
 			} else {
 				// call error function.
